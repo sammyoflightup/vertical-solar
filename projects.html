@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Our Projects | Vertical Solar Nigeria</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green-50:#f0faf0;
+  --green-100:#d8f5d8;
+  --green-400:#4cba6a;
+  --green-500:#2ea84d;
+  --green-600:#1e8c3a;
+  --green-700:#146328;
+  --text:#1a331a;
+  --gray:#7a9a7a;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Plus Jakarta Sans",sans-serif;}
+
+body{background:#fff;color:var(--text);}
+
+/* HERO */
+.hero{
+  padding:100px 24px 60px;
+  text-align:center;
+  background:linear-gradient(135deg,#f0faf0,#fff);
+}
+.hero h1{
+  font-family:"DM Serif Display";
+  font-size:2.8rem;
+}
+.hero p{
+  max-width:600px;
+  margin:10px auto;
+  color:var(--gray);
+}
+
+/* GRID */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 24px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border:1px solid var(--green-100);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.slider-wrapper{
+  position:relative;
+  overflow:hidden;
+}
+
+.slider{
+  display:flex;
+  transition:transform .5s ease;
+}
+
+.slider img{
+  width:100%;
+  flex-shrink:0;
+  height:220px;
+  object-fit:cover;
+}
+
+.slider-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+.card-body{
+  padding:18px;
+}
+
+.card h3{
+  font-size:1.1rem;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:0.9rem;
+  color:var(--gray);
+  line-height:1.6;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  padding:60px 24px;
+  background:var(--green-50);
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  background:var(--green-500);
+  color:#fff;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:600;
+  margin-top:16px;
+  transition:.2s;
+}
+
+.btn:hover{background:var(--green-600);transform:translateY(-2px);}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Our Solar Projects</h1>
+  <p>
+    A showcase of our completed residential, commercial, and industrial solar installations across Nigeria.
+  </p>
+</section>
+
+<!-- PROJECT GRID -->
+<section class="container">
+  <div class="grid">
+
+    <!-- PROJECT 1 -->
+    <div class="card">
+      <div class="slider-wrapper">
+        <div class="slider" data-index="0">
+          <img src="images/project1a.jpg">
+          <img src="images/project1b.jpg">
+        </div>
+        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
+        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
+      </div>
+      <div class="card-body">
+        <h3>Residential Solar Installation</h3>
+        <p>5kW hybrid system with lithium battery backup for a modern family home.</p>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="card">
+      <div class="slider-wrapper">
+        <div class="slider" data-index="0">
+          <img src="images/project2a.jpg">
+          <img src="images/project2b.jpg">
+        </div>
+        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
+        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
+      </div>
+      <div class="card-body">
+        <h3>Commercial Solar System</h3>
+        <p>20kW solar solution powering a corporate office with smart monitoring.</p>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="card">
+      <div class="slider-wrapper">
+        <div class="slider" data-index="0">
+          <img src="images/project3a.jpg">
+          <img src="images/project3b.jpg">
+        </div>
+        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
+        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
+      </div>
+      <div class="card-body">
+        <h3>Industrial Backup System</h3>
+        <p>High-capacity lithium system ensuring uninterrupted factory operations.</p>
+      </div>
+    </div>
+
+    <!-- ADD MORE PROJECTS HERE -->
+    <!-- You can duplicate cards up to your 10+ projects -->
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Have a Similar Project in Mind?</h2>
+  <p>Let’s design a solar system tailored for your home or business.</p>
+  <a class="btn" href="https://wa.me/2347030073471?text=Hello%20Vertical%20Solar,%20I%20want%20a%20solar%20quote">Contact Us on WhatsApp</a>
+</section>
+
+<script>
+function moveSlide(btn, direction){
+  const wrapper = btn.closest('.slider-wrapper');
+  const slider = wrapper.querySelector('.slider');
+
+  let index = parseInt(slider.dataset.index);
+  const total = slider.children.length;
+
+  index += direction;
+  if(index < 0) index = 0;
+  if(index > total - 1) index = total - 1;
+
+  slider.dataset.index = index;
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}
+</script>
+
+</body>
+</html>
