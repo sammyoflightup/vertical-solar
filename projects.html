@@ -3,65 +3,205 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Our Projects | Vertical Solar Nigeria</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --green-50:#f0faf0;
-  --green-100:#d8f5d8;
-  --green-400:#4cba6a;
-  --green-500:#2ea84d;
-  --green-600:#1e8c3a;
-  --green-700:#146328;
-  --text:#1a331a;
-  --gray:#7a9a7a;
-  --radius:16px;
-  --shadow:0 10px 30px rgba(0,0,0,0.08);
+
+:root{
+  --green-50:#f4fbf5;
+  --green-100:#dff4e3;
+  --green-200:#bce8c6;
+  --green-500:#1fa84d;
+  --green-600:#17853d;
+  --green-700:#10652f;
+
+  --dark:#102114;
+  --text:#29402d;
+  --muted:#6f8874;
+  --white:#ffffff;
+
+  --radius:24px;
+
+  --shadow:
+  0 10px 40px rgba(13, 38, 18, 0.08);
+
+  --border:
+  1px solid rgba(31,168,77,0.10);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Plus Jakarta Sans",sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-body{background:#fff;color:var(--text);}
+body{
+  font-family:"Plus Jakarta Sans",sans-serif;
+  background:#fff;
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
+
 .hero{
-  padding:100px 24px 60px;
-  text-align:center;
-  background:linear-gradient(135deg,#f0faf0,#fff);
-}
-.hero h1{
-  font-family:"DM Serif Display";
-  font-size:2.8rem;
-}
-.hero p{
-  max-width:600px;
-  margin:10px auto;
-  color:var(--gray);
+  position:relative;
+  padding:120px 24px 90px;
+  overflow:hidden;
+  background:
+  linear-gradient(
+  135deg,
+  #f4fbf5 0%,
+  #ffffff 45%,
+  #f7fff9 100%
+  );
 }
 
-/* GRID */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 24px;
+.hero::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(31,168,77,0.08);
+  top:-200px;
+  right:-150px;
+  filter:blur(10px);
 }
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:rgba(31,168,77,0.06);
+  bottom:-180px;
+  left:-120px;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  background:rgba(31,168,77,0.10);
+  color:var(--green-700);
+
+  padding:10px 18px;
+  border-radius:999px;
+
+  font-size:0.85rem;
+  font-weight:700;
+
+  margin-bottom:24px;
+}
+
+.hero h1{
+  font-family:"DM Serif Display",serif;
+  font-size:clamp(3rem,6vw,5rem);
+  line-height:1.05;
+  color:var(--dark);
+
+  margin-bottom:22px;
+}
+
+.hero p{
+  max-width:720px;
+  margin:auto;
+
+  font-size:1.05rem;
+  line-height:1.9;
+
+  color:var(--muted);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.projects-section{
+  padding:90px 24px;
+}
+
+.container{
+  max-width:1280px;
+  margin:auto;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+
+  margin-bottom:50px;
+}
+
+.section-heading h2{
+  font-size:2.2rem;
+  color:var(--dark);
+}
+
+.section-heading p{
+  max-width:550px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* =========================
+   GRID
+========================= */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:24px;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  gap:32px;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
+
 .card{
-  background:#fff;
-  border:1px solid var(--green-100);
+  position:relative;
+
+  background:var(--white);
   border-radius:var(--radius);
   overflow:hidden;
+
+  border:var(--border);
+
   box-shadow:var(--shadow);
+
+  transition:
+  transform .35s ease,
+  box-shadow .35s ease;
 }
+
+.card:hover{
+  transform:translateY(-8px);
+
+  box-shadow:
+  0 25px 60px rgba(13,38,18,0.12);
+}
+
+/* =========================
+   IMAGE SLIDER
+========================= */
 
 .slider-wrapper{
   position:relative;
@@ -76,60 +216,262 @@ body{background:#fff;color:var(--text);}
 .slider img{
   width:100%;
   flex-shrink:0;
-  height:220px;
+  height:280px;
   object-fit:cover;
 }
+
+/* Overlay */
+
+.image-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+  to top,
+  rgba(0,0,0,0.55),
+  rgba(0,0,0,0.05)
+  );
+}
+
+.project-badge{
+  position:absolute;
+  top:18px;
+  left:18px;
+
+  background:rgba(255,255,255,0.95);
+  color:var(--green-700);
+
+  padding:8px 14px;
+  border-radius:999px;
+
+  font-size:0.8rem;
+  font-weight:700;
+
+  backdrop-filter:blur(6px);
+}
+
+/* Slider buttons */
 
 .slider-btn{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  background:#fff;
+
+  width:42px;
+  height:42px;
+
   border:none;
-  padding:8px 12px;
   border-radius:50%;
+
+  background:rgba(255,255,255,0.95);
+
+  color:var(--dark);
+
+  font-size:1.2rem;
+  font-weight:700;
+
   cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.25s ease;
+
+  box-shadow:
+  0 8px 20px rgba(0,0,0,0.12);
 }
 
-.prev{left:10px;}
-.next{right:10px;}
+.slider-btn:hover{
+  background:var(--green-500);
+  color:#fff;
+}
+
+.prev{
+  left:16px;
+}
+
+.next{
+  right:16px;
+}
+
+/* =========================
+   CARD BODY
+========================= */
 
 .card-body{
-  padding:18px;
+  padding:28px;
 }
 
-.card h3{
-  font-size:1.1rem;
-  margin-bottom:6px;
+.card-body h3{
+  font-size:1.25rem;
+  line-height:1.4;
+  color:var(--dark);
+
+  margin-bottom:16px;
 }
 
-.card p{
-  font-size:0.9rem;
-  color:var(--gray);
-  line-height:1.6;
+.card-body p{
+  color:var(--muted);
+  line-height:1.8;
+  font-size:0.95rem;
+
+  margin-bottom:24px;
 }
 
-/* CTA */
-.cta{
-  text-align:center;
-  padding:60px 24px;
+/* =========================
+   METRICS
+========================= */
+
+.metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.metric{
   background:var(--green-50);
+  border-radius:18px;
+
+  padding:16px;
+}
+
+.metric small{
+  display:block;
+  color:var(--muted);
+  margin-bottom:8px;
+
+  font-size:0.8rem;
+}
+
+.metric strong{
+  color:var(--green-700);
+  font-size:1rem;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  padding:100px 24px;
+}
+
+.cta-box{
+  max-width:1200px;
+  margin:auto;
+
+  background:
+  linear-gradient(
+  135deg,
+  #0f2d17,
+  #174824
+  );
+
+  border-radius:36px;
+
+  padding:70px 50px;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.cta-box::before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.06);
+
+  right:-120px;
+  top:-150px;
+}
+
+.cta-content{
+  position:relative;
+  z-index:2;
+
+  max-width:700px;
+}
+
+.cta h2{
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.2;
+
+  color:#fff;
+
+  margin-bottom:18px;
+}
+
+.cta p{
+  color:rgba(255,255,255,0.75);
+  line-height:1.9;
+
+  margin-bottom:30px;
 }
 
 .btn{
-  display:inline-block;
-  padding:14px 28px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
   background:var(--green-500);
   color:#fff;
+
+  padding:16px 28px;
+  border-radius:999px;
+
   text-decoration:none;
-  border-radius:40px;
-  font-weight:600;
-  margin-top:16px;
-  transition:.2s;
+  font-weight:700;
+
+  transition:.25s ease;
 }
 
-.btn:hover{background:var(--green-600);transform:translateY(-2px);}
+.btn:hover{
+  background:#22bf58;
+  transform:translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .hero{
+    padding:90px 20px 70px;
+  }
+
+  .projects-section{
+    padding:70px 20px;
+  }
+
+  .section-heading{
+    flex-direction:column;
+    align-items:start;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .slider img{
+    height:240px;
+  }
+
+  .cta-box{
+    padding:50px 28px;
+    border-radius:28px;
+  }
+
+  .metrics{
+    grid-template-columns:1fr;
+  }
+
+}
 
 </style>
 </head>
@@ -137,93 +479,317 @@ body{background:#fff;color:var(--text);}
 <body>
 
 <!-- HERO -->
+
 <section class="hero">
-  <h1>Our Solar Projects</h1>
-  <p>
-    A showcase of our completed residential, commercial, and industrial solar installations across Nigeria.
-  </p>
-</section>
 
-<!-- PROJECT GRID -->
-<section class="container">
-  <div class="grid">
+  <div class="hero-content">
 
-    <!-- PROJECT 1 -->
-    <div class="card">
-      <div class="slider-wrapper">
-        <div class="slider" data-index="0">
-          <img src="images/project1a.jpg">
-          <img src="images/project1b.jpg">
-        </div>
-        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
-        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
-      </div>
-      <div class="card-body">
-        <h3>Residential Solar Installation</h3>
-        <p>5kW hybrid system with lithium battery backup for a modern family home.</p>
-      </div>
-    </div>
+  
+    <h1>
+      Other Projects
+    </h1>
 
-    <!-- PROJECT 2 -->
-    <div class="card">
-      <div class="slider-wrapper">
-        <div class="slider" data-index="0">
-          <img src="images/project2a.jpg">
-          <img src="images/project2b.jpg">
-        </div>
-        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
-        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
-      </div>
-      <div class="card-body">
-        <h3>Commercial Solar System</h3>
-        <p>20kW solar solution powering a corporate office with smart monitoring.</p>
-      </div>
-    </div>
-
-    <!-- PROJECT 3 -->
-    <div class="card">
-      <div class="slider-wrapper">
-        <div class="slider" data-index="0">
-          <img src="images/project3a.jpg">
-          <img src="images/project3b.jpg">
-        </div>
-        <button class="slider-btn prev" onclick="moveSlide(this,-1)">‹</button>
-        <button class="slider-btn next" onclick="moveSlide(this,1)">›</button>
-      </div>
-      <div class="card-body">
-        <h3>Industrial Backup System</h3>
-        <p>High-capacity lithium system ensuring uninterrupted factory operations.</p>
-      </div>
-    </div>
-
-    <!-- ADD MORE PROJECTS HERE -->
-    <!-- You can duplicate cards up to your 10+ projects -->
+    <p>
+      Explore some of our completed residential, commercial, and industrial
+      solar installations engineered for reliability, efficiency, and
+      long-term energy independence.
+    </p>
 
   </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects-section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div>
+        <h2>Featured Solar Projects</h2>
+      </div>
+
+      <p>
+        Our portfolio reflects high-performance solar engineering,
+        scalable energy systems, and sustainable infrastructure delivery
+        across multiple industries.
+      </p>
+
+    </div>
+
+    <div class="grid">
+
+      <!-- PROJECT 1 -->
+
+      <div class="card">
+
+        <div class="slider-wrapper">
+
+          <div class="slider" data-index="0">
+
+            <img src="images/Projects 4.jpg" alt="">
+            <img src="images/vertical2.png" alt="">
+
+          </div>
+
+          <div class="image-overlay"></div>
+
+          <div class="project-badge">
+            Commercial Solar
+          </div>
+
+          <button class="slider-btn prev" onclick="moveSlide(this,-1)">
+            ‹
+          </button>
+
+          <button class="slider-btn next" onclick="moveSlide(this,1)">
+            ›
+          </button>
+
+        </div>
+
+        <div class="card-body">
+
+          <h3>
+            TotalEnergies – TEPNG Block H Solarization
+          </h3>
+
+          <p>
+            Solarization of TEPNG Block H – Joint Venture Asset Emergency
+            Management Center (EMC), Rivers State.
+          </p>
+
+          <div class="metrics">
+
+            <div class="metric">
+              <small>Installed Capacity</small>
+              <strong>113.4 kWp</strong>
+            </div>
+
+            <div class="metric">
+              <small>Solar Panels</small>
+              <strong>210 Units</strong>
+            </div>
+
+            <div class="metric">
+              <small>Coverage Area</small>
+              <strong>420m² Rooftop</strong>
+            </div>
+
+            <div class="metric">
+              <small>Annual CO₂ Reduction</small>
+              <strong>95.6 Tons</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 2 -->
+
+      <div class="card">
+
+        <div class="slider-wrapper">
+
+          <div class="slider" data-index="0">
+
+            <img src="images/Picture4.png" alt="">
+            <img src="images/Picture8.png" alt="">
+
+          </div>
+
+          <div class="image-overlay"></div>
+
+          <div class="project-badge">
+            Industrial Hybrid System
+          </div>
+
+          <button class="slider-btn prev" onclick="moveSlide(this,-1)">
+            ‹
+          </button>
+
+          <button class="slider-btn next" onclick="moveSlide(this,1)">
+            ›
+          </button>
+
+        </div>
+
+        <div class="card-body">
+
+          <h3>
+            Textile Baling Factory — Aba, Abia State
+          </h3>
+
+          <p>
+            Hybrid solar PV system engineered for uninterrupted industrial
+            operations, improved efficiency, and reliable energy backup.
+          </p>
+
+          <div class="metrics">
+
+            <div class="metric">
+              <small>PV Capacity</small>
+              <strong>44 kWp</strong>
+            </div>
+
+            <div class="metric">
+              <small>Inverter Capacity</small>
+              <strong>40 kW</strong>
+            </div>
+
+            <div class="metric">
+              <small>Battery Storage</small>
+              <strong>45 kWh</strong>
+            </div>
+
+            <div class="metric">
+              <small>Solution Type</small>
+              <strong>Hybrid Solar</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PROJECT 3 -->
+
+      <div class="card">
+
+        <div class="slider-wrapper">
+
+          <div class="slider" data-index="0">
+
+            <img src="images/h (1).jpg" alt="">
+            <img src="images/h (2).jpg" alt="">
+
+          </div>
+
+          <div class="image-overlay"></div>
+
+          <div class="project-badge">
+            Luxury Residential
+          </div>
+
+          <button class="slider-btn prev" onclick="moveSlide(this,-1)">
+            ‹
+          </button>
+
+          <button class="slider-btn next" onclick="moveSlide(this,1)">
+            ›
+          </button>
+
+        </div>
+
+        <div class="card-body">
+
+          <h3>
+            High-Net-Worth Residential Installation — Banana Island, Lagos
+          </h3>
+
+          <p>
+            Premium hybrid residential on-grid solar solution designed for
+            energy efficiency, smart backup performance, and modern luxury living.
+          </p>
+
+          <div class="metrics">
+
+            <div class="metric">
+              <small>System Type</small>
+              <strong>Hybrid On-Grid</strong>
+            </div>
+
+            <div class="metric">
+              <small>Installed Capacity</small>
+              <strong>40 kW</strong>
+            </div>
+
+            <div class="metric">
+              <small>Location</small>
+              <strong>Banana Island</strong>
+            </div>
+
+            <div class="metric">
+              <small>Category</small>
+              <strong>Residential</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 <!-- CTA -->
+
 <section class="cta">
-  <h2>Have a Similar Project in Mind?</h2>
-  <p>Let’s design a solar system tailored for your home or business.</p>
-  <a class="btn" href="https://wa.me/2347030073471?text=Hello%20Vertical%20Solar,%20I%20want%20a%20solar%20quote">Contact Us on WhatsApp</a>
+
+  <div class="cta-box">
+
+    <div class="cta-content">
+
+      <h2>
+        Ready to Build Your Solar Project?
+      </h2>
+
+      <p>
+        Whether you're planning a residential installation,
+        commercial energy solution, or industrial-scale deployment,
+        our engineering team can help you design the right system.
+      </p>
+
+      <a
+        class="btn"
+        href="https://wa.me/2347030073471?text=Hello%20Vertical%20Solar,%20I%20want%20a%20solar%20quote"
+      >
+        Get a Solar Quote →
+      </a>
+
+    </div>
+
+  </div>
+
 </section>
 
 <script>
+
 function moveSlide(btn, direction){
+
   const wrapper = btn.closest('.slider-wrapper');
   const slider = wrapper.querySelector('.slider');
 
   let index = parseInt(slider.dataset.index);
+
   const total = slider.children.length;
 
   index += direction;
-  if(index < 0) index = 0;
-  if(index > total - 1) index = total - 1;
+
+  if(index < 0){
+    index = total - 1;
+  }
+
+  if(index > total - 1){
+    index = 0;
+  }
 
   slider.dataset.index = index;
-  slider.style.transform = `translateX(-${index * 100}%)`;
+
+  slider.style.transform =
+  `translateX(-${index * 100}%)`;
+
 }
+
 </script>
 
 </body>

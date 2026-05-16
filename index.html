@@ -599,80 +599,251 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 50px;
 }
 
+/* CARD */
 .project-card {
+  position: relative;
   background: #ffffff;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  border: 1px solid #eaf3ea;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(46,168,77,0.08);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+  transition: all 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 45px rgba(46,168,77,0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 24px 60px rgba(46,168,77,0.16);
 }
 
-/* Slider */
+/* TOP BADGE */
+.project-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 10;
+
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+
+  color: var(--green-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  padding: 8px 14px;
+  border-radius: 40px;
+
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   SLIDER
+========================= */
+
 .slider {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
-  height: 210px;
-  margin-bottom: 14px;
+  height: 240px;
 }
 
+/* Track */
 .slider-track {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.8s ease-in-out;
 }
 
+/* Images */
 .slider-track img {
   width: 100%;
   flex-shrink: 0;
-  height: 210px;
+  height: 240px;
   object-fit: cover;
+
+  transition: transform 0.6s ease;
 }
 
-/* Buttons */
+/* IMAGE ZOOM EFFECT */
+.project-card:hover .slider-track img {
+  transform: scale(1.05);
+}
+
+/* DARK OVERLAY */
+.slider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.28),
+    rgba(0,0,0,0.02)
+  );
+  pointer-events: none;
+}
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
 .slider button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.95);
+
+  width: 42px;
+  height: 42px;
+
   border: none;
-  width: 36px;
-  height: 36px;
   border-radius: 50%;
-  cursor: pointer;
+
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+
+  color: #111;
   font-size: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 5;
+
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
-.slider .prev { left: 10px; }
-.slider .next { right: 10px; }
+/* SHOW BUTTONS ON HOVER */
+.project-card:hover .slider button {
+  opacity: 1;
+}
 
-/* Text */
+.slider button:hover {
+  background: var(--green-500);
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider .prev {
+  left: 14px;
+}
+
+.slider .next {
+  right: 14px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.project-content {
+  padding: 22px;
+}
+
+/* TITLE */
 .project-card h3 {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--green-700);
   margin-bottom: 6px;
+  line-height: 1.4;
 }
 
-.project-card p {
-  font-size: 0.9rem;
-  color: var(--gray-700);
-  line-height: 1.6;
+/* LOCATION */
+.location {
+  font-size: 0.82rem;
+  color: var(--green-500);
+  font-weight: 600;
+  margin-bottom: 14px;
 }
-.view-more{
-  text-align:center;
-  margin-top:40px;
+
+/* DESCRIPTION */
+.desc {
+  font-size: 0.92rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+/* =========================
+   SPECS
+========================= */
+
+.project-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* SPEC CARD */
+.project-specs div {
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+
+  padding: 14px 10px;
+  border-radius: 14px;
+
+  text-align: center;
+
+  transition: all 0.3s ease;
+}
+
+.project-specs div:hover {
+  background: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(46,168,77,0.12);
+}
+
+/* LABEL */
+.project-specs span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* VALUE */
+.project-specs b {
+  font-size: 0.92rem;
+  color: var(--green-700);
+}
+
+/* =========================
+   VIEW MORE BUTTON
+========================= */
+
+.view-more {
+  text-align: center;
+  margin-top: 60px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slider {
+    height: 220px;
+  }
+
+  .slider-track img {
+    height: 220px;
+  }
+
+  .project-specs {
+    grid-template-columns: 1fr;
+  }
+
 }
 
   /* ── CONTACT ── */
@@ -1182,8 +1353,8 @@ We specialize in the design, installation, and management of solar, hybrid, and 
 
         <div class="slider">
           <div class="slider-track">
-            <img src="images/mm2-1.jpg">
-            <img src="images/mm2-2.jpg">
+            <img src="images/1.jpg">
+            <img src="images/picture8.jpg">
           </div>
 
           <button class="prev" onclick="moveSlide(this,-1)">‹</button>
@@ -1214,8 +1385,8 @@ We specialize in the design, installation, and management of solar, hybrid, and 
 
         <div class="slider">
           <div class="slider-track">
-            <img src="images/qoray1.jpg">
-            <img src="images/qoray2.jpg">
+            <img src="images/3.png">
+            <img src="images/4.png">
           </div>
 
           <button class="prev" onclick="moveSlide(this,-1)">‹</button>
@@ -1246,8 +1417,8 @@ We specialize in the design, installation, and management of solar, hybrid, and 
 
         <div class="slider">
           <div class="slider-track">
-            <img src="images/3.png">
-            <img src="images/4.png">
+            <img src="images/Picture7.png">
+            <img src="images/picture8.jpg">
           </div>
 
           <button class="prev" onclick="moveSlide(this,-1)">‹</button>
@@ -1282,31 +1453,48 @@ We specialize in the design, installation, and management of solar, hybrid, and 
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
+
     <p class="section-tag">Contact Us</p>
     <h2 class="section-title">Start Your Solar Journey Today</h2>
+
+    <!-- COMPANY NAME -->
+    <div style="margin-bottom: 20px;">
+      <strong>VERTICAL ENERGY & NETWORKS LTD</strong><br>
+      <strong>& GREENSTREAK ENERGIES</strong>
+    </div>
+
     <div class="contact-grid">
+
+      <!-- CONTACT INFO -->
       <div class="contact-info">
+
         <div class="contact-item">
           <div class="contact-item-icon">📞</div>
           <div>
             <strong>Phone</strong>
-            <span>+234 703 007 3471</span>
+            <span>08186311330, 07036234843, 08162310111</span>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">✉️</div>
           <div>
             <strong>Email</strong>
-            <span>info@solarbright.ng</span>
+            <span>
+              Verticalenergy.ng@gmail.com<br>
+              gabriel.oramasionwu@greenstreakenergies.com
+            </span>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">📍</div>
           <div>
             <strong>Address</strong>
-            <span>215 Airport Rd, Port Harcourt, Rivers State, Nigeria</span>
+            <span>—</span>
           </div>
         </div>
+
         <div class="contact-item">
           <div class="contact-item-icon">🕐</div>
           <div>
@@ -1314,27 +1502,34 @@ We specialize in the design, installation, and management of solar, hybrid, and 
             <span>Mon–Fri: 8am–6pm | Sat: 9am–3pm</span>
           </div>
         </div>
+
       </div>
 
+      <!-- CONTACT FORM -->
       <form class="contact-form" onsubmit="handleSubmit(event)">
+
         <div class="form-row">
           <div class="form-group">
             <label>First Name</label>
             <input type="text" placeholder="John" required />
           </div>
+
           <div class="form-group">
             <label>Last Name</label>
             <input type="text" placeholder="Doe" required />
           </div>
         </div>
+
         <div class="form-group">
           <label>Email Address</label>
           <input type="email" placeholder="john@example.com" required />
         </div>
+
         <div class="form-group">
           <label>Phone Number</label>
           <input type="tel" placeholder="+234 000 000 0000" />
         </div>
+
         <div class="form-group">
           <label>Service Needed</label>
           <select>
@@ -1345,13 +1540,20 @@ We specialize in the design, installation, and management of solar, hybrid, and 
             <option>Solar Consultation</option>
           </select>
         </div>
+
         <div class="form-group">
           <label>Message</label>
           <textarea placeholder="Tell us about your energy needs..."></textarea>
         </div>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+          Send Message →
+        </button>
+
       </form>
+
     </div>
+
   </div>
 </section>
 
